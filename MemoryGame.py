@@ -1,6 +1,8 @@
 import time
 import os
 
+import Score
+
 
 def generate_sequence(difficulty):
     import random
@@ -36,6 +38,7 @@ def play(difficulty):
     user_numbers = get_list_from_user(difficulty)
     if is_list_equal(user_numbers=user_numbers, random_num=random_num):
         print("you won")
+        Score.add_Score(difficulty)
         return True
     else:
         print("you lost")

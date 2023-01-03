@@ -1,5 +1,7 @@
 from currency_converter import ECB_URL, CurrencyConverter
 
+import Score
+
 
 def get_money_interval(difficulty):
     import random
@@ -27,6 +29,7 @@ def play(difficulty):
     guess = get_guess_from_user(t)
     if high >= guess or guess >= low:
         print("you won")
+        Score.add_Score(difficulty)
         return True
     else:
         print("you lost")

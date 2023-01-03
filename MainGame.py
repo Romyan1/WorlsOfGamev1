@@ -4,5 +4,5 @@ import Live
 #import CurrencyRouletteGame
 
 Live.welcome()
-Live.load_game(1)
+Live.load_game()
 
