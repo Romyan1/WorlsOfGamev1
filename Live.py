@@ -1,12 +1,13 @@
 import GuessGame
 import MemoryGame
 import CurrencyRouletteGame
-import Score
+from Score import add_Score
 
 global difficulty, choose_game
 
 
 def welcome():
+    global name
     z = 0
     while z == 0:
         name = str(input('enter your name'))
@@ -19,6 +20,7 @@ def welcome():
 
 
 def load_game():
+    global difficulty, choose_game
     y = 0
     while y == 0:
         difficulty = int(input('enter difficulty between 1-5 for your game'))
@@ -42,19 +44,33 @@ def load_game():
         if choose_game <= 3 and choose_game >= 1:
             if choose_game == 1:
                 print('you chose option number 1')
-                MemoryGame.play(difficulty)
+                GuessGame.play(difficulty)
+                if bool(GuessGame) is True:
+                    add_Score(difficulty=difficulty)
                 x = 1
             elif choose_game == 2:
                 print('you chose option number 2')
-                GuessGame.play(difficulty)
+                MemoryGame.play(difficulty)
+                if bool(MemoryGame) is True:
+                    add_Score(difficulty=difficulty)
                 x = 1
             elif choose_game == 3:
                 print('you chose option number 3')
                 CurrencyRouletteGame.play(difficulty)
+                if bool(CurrencyRouletteGame) is True:
+                    add_Score(difficulty=difficulty)
                 x = 1
         else:
             print('you chose an invalid number, please try again')
 
+
+
+        continue_game = str(input('''Would you like to play again?
+if yes press y, if not press n'''))
+        if continue_game == 'y':
+            x = 0
+        elif choose_game == 'n':
+            x = 1
 
     return difficulty, choose_game
 

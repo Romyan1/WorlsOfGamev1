@@ -27,7 +27,6 @@ def play(difficulty):
     guess_number = get_guess_from_user(difficulty)
     if compare_results(secret_number=secret_number, guess_number=guess_number):
         print("you won")
-        Score.add_Score(difficulty)
         return True
     else:
         print("you lost")
