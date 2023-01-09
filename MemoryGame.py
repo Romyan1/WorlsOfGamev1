@@ -42,5 +42,3 @@ def play(difficulty):
     else:
         print("you lost")
         return False
-
-

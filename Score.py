@@ -2,16 +2,18 @@ from pathlib import Path
 
 
 def add_Score(difficulty):
-    Points_Of_Winning = str((difficulty * 3) +5)
+    Points_Of_Winning = int((difficulty * 3) + 5)
+    score = Points_Of_Winning
     try:
-        score_file = open(Path("Score.txt"), "r")
-        score = open(Path("Score.txt"), "a")
-        score.write(f" ,{Points_Of_Winning}")
-    except FileNotFoundError:
-        score = open(Path("Score.txt"), "x")
-        score.write(Points_Of_Winning)
+        with open(Path("Score.txt"), "r") as f:
+            score_from_file = f.readlines()
+            if len(score_from_file) > 0:
+                score += int(score_from_file[0])
+    finally:
+        with open(Path("Score.txt"), "w+") as f:
+            f.write(str(score))
 
 
 
-
+                
 
